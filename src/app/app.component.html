@@ -1,0 +1,74 @@
+<div class="row" style="margin-top:5%">
+    <div class="col-md-3 col-sm-offset-4">
+        <h1 class="text-center">Trip Sorter</h1>
+        <hr />
+    </div>
+    <div class="col-md-3 col-md-offset-4" *ngIf="showForm">
+        <div class="alert alert-warning" *ngIf="errorMsg">
+            <strong>Warning!</strong> {{errorMsg}}
+        </div>
+
+        <form *ngIf="!isTripInvalid" #tripForm="ngForm" (ngSubmit)="sortTrip(tripForm.value)" novalidate>
+
+            <div class="form-group">
+                <label class="control-label" for="fromCitySelect">Departure City:</label>
+                <select name="fromCity" id="departure-city" class="form-control" ngModel required #fromCity="ngModel">
+                   
+                    <option *ngFor="let city of departureCities" [ngValue]="city">
+                        {{city}}
+                    </option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label" for="toCitySelect">Arrival City:</label>
+                <select name="toCity" id="arrival-city" class="form-control" ngModel required #toCity="ngModel">
+                      
+                    <option *ngFor="let city of arrivalCities" [ngValue]="city">
+                        {{city}}
+                    </option>
+                </select>
+            </div>
+
+
+            <div class="form-group" id="filterButtons">
+                <button *ngFor="let filter of buttonFilter" (click)="changeSortingType(filter)" type="button" [ngClass]="(filter==tripFilter)?'btn btn-success':'btn btn-default'">{{filter}}</button>
+            </div>
+            <hr />
+
+
+            <div class="form-group col-md-12">
+                <button type="submit" class="btn btn-primary submit-button" [disabled]="!tripForm.form.valid"> 
+                            <span class="glyphicon glyphicon-search"></span>   Search
+                </button>
+            </div>
+        </form>
+
+    </div>
+
+    <div id="resultsContainer" class="col-md-3 col-md-offset-4" *ngIf="fullTrip && !showForm">
+        <div class="trip-path col-md-12" *ngFor="let trip of fullTrip.fullPath">
+            <h4>
+                {{trip.departure}}
+                <span class="glyphicon glyphicon-chevron-right middle-text"></span> {{trip.arrival}}
+                <span class="pull-right">{{trip.finalPrice}}&#8364;</span>
+            </h4>
+            <div>
+                <span class="tripInfo">
+                    <span class="transportText">{{trip.transport}}</span>
+                <span class="referenceText">{{trip.reference}} </span>for {{trip.duration.hours}}h{{trip.duration.minutes}}m
+                </span>
+            </div>
+        </div>
+        <div class="form-group col-md-12" id="totalInfo">
+            <span class="pull-left transportText">Total</span>
+            <span>{{fullTrip.normalTotalTime}}</span>
+            <span class="transportText pull-right">{{fullTrip.totalPrice}}&#8364;</span>
+        </div>
+        <div class="form-group col-md-12">
+            <button type="button" (click)="hideInfo()" class="btn btn-primary submit-button">
+            <span class="glyphicon glyphicon-repeat"></span> Reset</button>
+        </div>
+
+    </div>
+</div>

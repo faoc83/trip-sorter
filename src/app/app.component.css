@@ -1,0 +1,35 @@
+#resultsContainer .trip-path {
+    background-color: #e6e2e2;
+    margin-bottom: 4px;
+    height: 80px;
+    padding: 10px;
+}
+
+#resultsContainer ul {
+    list-style-type: none;
+}
+
+.transportText {
+    font-weight: bold;
+    font-size: 17px;
+}
+
+#totalInfo {
+    background-color: #e6e2e2;
+    height: 50px;
+    padding: 10px;
+    text-align: center;
+}
+
+.submit-button {
+    width: 100%;
+}
+
+.middle-text {
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+#filterButtons button {
+    margin: 5px;
+}
