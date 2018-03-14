@@ -9,11 +9,11 @@ import { globalConst } from '../assets/utils';
 @Injectable()
 export class GraphService {
    
-    arrivalCities = [];
-    departureCities = [];
-    deals: Deal[] = [];
-    cheapestMap: any = {};
-    fastestMap: any = {};
+    private arrivalCities = [];
+    private departureCities = [];
+    private deals: Deal[] = [];
+    private cheapestMap: any = {};
+    private fastestMap: any = {};
 
     constructor(private http: Http) { }
     /**

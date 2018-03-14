@@ -11,8 +11,8 @@ import { Trip } from '../models/trip';
 
 @Injectable()
 export class DealsService { 
-    arrivalCities = [];
-    departureCities = [];
+    private arrivalCities = [];
+    private departureCities = [];
     deals: Deal[] = [];
 
     constructor(private http: Http, private graphService: GraphService) { }
