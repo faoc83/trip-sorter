@@ -8,7 +8,7 @@ This application was developed using: Angular2, TypeScript, Bootstrap.
 - Install NodeJS
 - Install typescript and angular-cli: 
     ```sh
-      $ npm install -g typescript npm install -g @angular/cli
+      $ npm install -g typescript @angular/cli
     ```
 - Checkout project using git.
 - Run:
